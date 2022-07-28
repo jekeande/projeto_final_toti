@@ -40,7 +40,7 @@ export default function NovoCliente() {
                     required
                   /></h3>
               </label>
-              <label><h3>Nome:
+              <label><h3>Nom:
                   <input
                     type="text"
                     name="nome"
