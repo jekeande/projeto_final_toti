@@ -11,7 +11,7 @@ export default function Cards({produto}) {
           <p>{produto.nome_produto}</p>
           <hr/>
           <p>{produto.tipo_produto}</p>
-          <p>Tamanho: {produto.tamanho_produto}</p>
+          <p>Tamanho: {produto.tamanho_produtoooo}</p>
           <p>Preco: {produto.valor_produto}</p>
         </div>
       </div>
