@@ -24,7 +24,6 @@ export default function Router() {
                   <Route exact path="/new" element={<NovoCliente />} />
                 </Routes>
               </div>
-          
       </BrowserRouter>
      </div>
   );
