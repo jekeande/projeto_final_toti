@@ -136,7 +136,7 @@ export default function Pedido() {
                   />
               </label>
               <div className="button">                
-                <button className="salvar" type="submit">Cadastrarme</button>
+                <button className="salvar" type="submit">Comprar</button>
               </div>
             </form>
       </div>
