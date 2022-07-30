@@ -7,11 +7,11 @@ const URL = "http://localhost:3001/carrinho"
 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  await axios.post(URL);
+  const carrinho = await axios.post(URL,
+    {produto : produto.id_produto,
+    quantidade : "1"});
+  console.log(carrinho)
 }
-
-console.log(handleSubmit)
-
     return (
       <div className="Cards">
         <form onSubmit={handleSubmit}>
@@ -23,7 +23,7 @@ console.log(handleSubmit)
             <p>Tamanho: {produto.tamanho_produto}</p>
             <p>Preco: {produto.valor_produto}</p>
           </div>
-          <button>carrinho</button>
+          <button>Carrinho</button>
         </form>
       </div>
     );

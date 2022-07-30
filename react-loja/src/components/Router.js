@@ -10,6 +10,7 @@ import NovoCliente from './NovoCliente.js';
 import Login from "./Login.js";
 import Pedido from "./Pedido.js";
 import Carrinho from "./Carrinho.js";
+import Sair from "./Sair.js";
 
 export default function Router() {
   return (
