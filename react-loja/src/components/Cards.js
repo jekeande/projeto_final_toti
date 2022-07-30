@@ -10,6 +10,8 @@ const handleSubmit = async (event) => {
   await axios.post(URL);
 }
 
+console.log(handleSubmit)
+
     return (
       <div className="Cards">
         <form onSubmit={handleSubmit}>

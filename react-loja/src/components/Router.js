@@ -20,6 +20,7 @@ export default function Router() {
                 <Link to="/login"><p className="buttonLogin">Login</p></Link>
                 <Link to="/carrinho"><p className="buttonLogin">carrinho</p></Link>
                 <Link to="/pedido"><p className="buttonLogin">pedido</p></Link>
+                <Link to="/Sair"><p className="buttonLogin">Sair </p></Link>
               </div>
               <div className="centro">
                 <Routes>
