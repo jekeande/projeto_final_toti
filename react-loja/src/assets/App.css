@@ -54,14 +54,14 @@
     justify-content: center; 
     flex-wrap: wrap;
 }
+.img_produto{
+  background-color: black;
+  height: 150px;
+}
 .Cards{
   margin: 20px 10px 20px 10px;
   border: 1px solid;
   border-radius: 5px;
-}
-.img_produto{
-  background-color: black;
-  height: 150px;
 }
 .Cards p{
   margin: 10px;
@@ -92,4 +92,13 @@
 }
 hr{
   width: 90%;
+}
+.CardCarrinho{
+  margin: 20px 10px 20px 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.CardCarrinho p{
+  margin: 10px;
+  font-weight: bold;
 }

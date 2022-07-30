@@ -3,13 +3,12 @@ import React from "react";
 export default function CardCarrinho({carrinho}) {
 
     return (
-
-        <div className="Cards">
-          <div>{carrinho.nome_produto}</div>
-          <div>{carrinho.tamanho_produto}</div>
-          <div>{carrinho.tipo_produto}</div>
-          <div>{carrinho.quantidade_produto}</div>
-          <div>{carrinho.valor_produto}</div>
-        </div>
-      );
+      <div className="CardCarrinho">
+        <p>{carrinho.nome_produto}</p>
+        <p>{carrinho.tipo_produto}</p>
+        <p>Tamanho:{carrinho.tamanho_produto}</p>
+        <p><button>-</button>{carrinho.quantidade_produto}<button>+</button></p>
+        <p>Preco:{carrinho.valor_produto}</p>
+      </div>
+    );
   }
