@@ -20,7 +20,7 @@ export default function Carrinho() {
   }, []);
 
   return (
-    <div className="carrinho">
+    <div className="Home">
       {state.map((carrinho, key) => (
         <CardCarrinho key={key} carrinho={carrinho} />
       ))}
