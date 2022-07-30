@@ -20,10 +20,15 @@ export default function Carrinho() {
   }, []);
 
   return (
-    <div className="Home">
+    <div>
+      <div className="Home">
       {state.map((carrinho, key) => (
         <CardCarrinho key={key} carrinho={carrinho} />
       ))}
     </div> 
+      <p>Total da compra:</p>
+      <button>compra</button>
+    </div>
+    
   );
 }
