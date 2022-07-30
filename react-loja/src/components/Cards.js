@@ -7,10 +7,7 @@ const URL = "http://localhost:3001/carrinho"
 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  const carrinho = await axios.post(URL,
-    {produto : produto.id_produto,
-    quantidade : "1"});
-  console.log(carrinho)
+  await axios.post(URL,{produto : produto.id_produto});
 }
     return (
       <div className="Cards">

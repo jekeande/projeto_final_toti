@@ -3,6 +3,8 @@ import React, { useState } from "react";
 export default function CardCarrinho({carrinho}) {
 
   const [count, setCount] = useState(1);
+  const valor = parseFloat(carrinho.valor_produto);
+  const valorTotal = parseFloat(valor*count)
 
     return (
       <div className="CardCarrinho">
@@ -12,7 +14,7 @@ export default function CardCarrinho({carrinho}) {
         <p><button onClick={() => setCount(count - 1)}>-</button>
         {count}
         <button onClick={() => setCount(count + 1)}>+</button></p>
-        <p>Preco:{carrinho.valor_produto}</p>
+        <p>Preco:{valorTotal}</p>
       </div>
     );
   }
