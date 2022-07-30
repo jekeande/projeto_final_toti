@@ -89,8 +89,8 @@ app.delete("/cliente", (req, res, next) => {
 --------------------------CRUD PRODUTO--------------
 --------------------------------------------------*/
 app.post("/produto",(req, res, next) => {
-      db.run("INSERT INTO produto (nome_produto,foto_produto,tamanho_produto,tipo_produto,valor_produto)VALUES(?,?,?,?,?)",
-          [req.body.produto, req.body.foto, req.body.tamanho, req.body.tipo, req.body.valor],
+      db.run("INSERT INTO produto (nome_produto,tamanho_produto,tipo_produto,valor_produto)VALUES(?,?,?,?)",
+          [req.body.produto, req.body.tamanho, req.body.tipo, req.body.valor],
           function(err, result){
               if(err) {
                   res.status(400).json({ "error": err.message })
