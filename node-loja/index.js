@@ -140,6 +140,54 @@ app.put("/produto",(req, res, next) => {
 });
 
 /*--------------------------------------------------
+--------------------------CRUD CARRINHO--------------
+--------------------------------------------------*/
+app.post("/carrinho",(req, res, next) => {
+    db.run("INSERT INTO carrinho (id_cliente,id_produto,quantidade_produto) VALUES (?,?,?)",
+        [req.body.cliente,req.body.produto,req.body.quantidade],
+        function(err, result){
+            if(err) {
+                res.status(400).json({ "error": err.message })
+                return;
+            }
+            res.status(201).json({
+                "carrinho Cadastrado ID": this.lastID
+            })
+        }) 
+})
+
+app.get("/carrinho", (req, res, next) => {
+  db.all("SELECT * FROM carrinho", [], (err, rows) => {
+      if (err) {
+          res.status(400).json({ "error": err.message });
+          return;
+      }
+      res.status(200).json(rows);
+  });
+});
+
+app.put("/carrinho",(req, res, next) => {
+    db.run("UPDATE carrinho SET quantidade_produto=? WHERE id_carrinho=?",
+        [req.body.quantidade, req.body.id],
+        function(err, result){
+            if(err) {
+                res.status(400).json({ "error": err.message })
+                return;
+            }
+            res.status(201).json("ID: " + req.body.id + " Atualizado")
+        }) 
+})
+
+app.delete("/carrinhoProduto", (req, res, next) => {
+    db.all("DELETE FROM carrinho WHERE id_produto=?", [req.body.id],
+        res.status(200).json(req.body.id + ": eliminado"));
+  });
+
+app.delete("/carrinhoCliente", (req, res, next) => {
+    db.all("DELETE FROM carrinho WHERE id_cliente=?", [req.body.id],
+        res.status(200).json(req.body.id + ": eliminado"));
+  });
+/*--------------------------------------------------
 --------------------------CRUD PEDIDO--------------
 --------------------------------------------------*/
 app.post("/pedido",(req, res, next) => {
