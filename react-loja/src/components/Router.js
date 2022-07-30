@@ -5,10 +5,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Home from "./Home";
+import Home from "./Home.js";
 import NovoCliente from './NovoCliente.js';
-import Login from "./Login";
-import Pedido from "./Pedido";
+import Login from "./Login.js";
+import Pedido from "./Pedido.js";
+import Carrinho from "./Carrinho.js";
 
 export default function Router() {
   return (
@@ -18,6 +19,7 @@ export default function Router() {
                 <Link to="/"><p className="Home">Home</p></Link>
                 <Link to="/login"><p className="buttonLogin">Login</p></Link>
                 <Link to="/pedido"><p className="buttonLogin">pedido</p></Link>
+                <Link to="/carrinho"><p className="buttonLogin">carrinho</p></Link>
               </div>
               <div className="centro">
                 <Routes>
@@ -25,6 +27,7 @@ export default function Router() {
                   <Route exact path="/login" element={<Login />} />
                   <Route exact path="/new" element={<NovoCliente />} />
                   <Route exact path="/pedido" element={<Pedido />} />
+                  <Route exact path="/carrinho" element={<Carrinho />} />
                 </Routes>
               </div>
       </BrowserRouter>

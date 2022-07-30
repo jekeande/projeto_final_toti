@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import Cards from "./Cards.js";
+import CardCarrinho from "./CardCarrinho.js";
 
-export default function Home() {
+export default function Carrinho() {
 
-  const URL = "http://localhost:3001/produtos";
+  const URL = "http://localhost:3001/carrinhos";
 
   const [state, setState] = useState([]);
 
@@ -20,9 +20,9 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="Home">
-      {state.map((produto, key) => (
-        <Cards key={key} produto={produto} />
+    <div className="carrinho">
+      {state.map((carrinho, key) => (
+        <CardCarrinho key={key} carrinho={carrinho} />
       ))}
     </div> 
   );

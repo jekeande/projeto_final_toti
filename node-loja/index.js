@@ -177,6 +177,16 @@ app.put("/carrinho",(req, res, next) => {
             res.status(201).json("ID: " + req.body.id + " Atualizado")
         }) 
 })
+app.get("/carrinhos", (req, res, next) => {
+    db.all("SELECT id_carrinho,nome_produto,tamanho_produto,tipo_produto,quantidade_produto,valor_produto from produto JOIN carrinho on carrinho.id_produto=produto.id_produto", [], (err, rows) => {
+        if (err) {
+            res.status(400).json({ "error": err.message });
+            return;
+        }
+        res.status(200).json(rows);
+    });
+  });
+
 
 app.delete("/carrinhoProduto", (req, res, next) => {
     db.all("DELETE FROM carrinho WHERE id_produto=?", [req.body.id],
