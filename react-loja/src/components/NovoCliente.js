@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export default function Pedido() {
+export default function NovoCliente() {
 
   const Navigate = useNavigate();
 
-  const [data, setData] = useState ({id: null, cpf: "", nome: "", endereco: "", cep: "", telefone: "", email: "", descricao: "", valor: "", numero: "", date: "", cvc: ""})
+  const [data, setData] = useState ({id: null, cpf: "", nome: "", endereco: "", cep: "", telefone: "", email: "", senha: ""})
 
   const handleChange = (event) => {
     setData({
@@ -15,13 +15,13 @@ export default function Pedido() {
     })
   }
 
-  const URL = "http://localhost:3001/pedido"
+  const URL = "http://localhost:3001/cliente"
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const cliente = await axios.post(URL,data);
     if (cliente){
-      Navigate('/');
+      Navigate('/login');
     }else
      console.error();
   }
@@ -90,53 +90,18 @@ export default function Pedido() {
                     required
                   /></h3>
               </label>
-              <label><h3>Descricao:
+              <label><h3>Senha:
                   <input
-                    type="textarea"
-                    name="descricao"
-                    placeholder="Descricao"
-                    defaultValue={data.descricao}
+                    type="password"
+                    name="senha"
+                    placeholder="Senha"
+                    defaultValue={data.senha}
                     onChange={handleChange}
                     required
                   /></h3>
-              </label>
-              <label><h3>Valor Total:
-                  <input
-                    type="text"
-                    name="valor"
-                    defaultValue={data.valor}
-                    onChange={handleChange}
-                    required
-                  /></h3>
-              </label>
-              <label><h3>Dados do cartao de pagamento:</h3>
-                  <input
-                    type="text"
-                    name="numero"
-                    placeholder="Numero do Cartao"
-                    defaultValue={data.numero}
-                    onChange={handleChange}
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="date"
-                    placeholder="MM/AA"
-                    defaultValue={data.date}
-                    onChange={handleChange}
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="cvc"
-                    placeholder="CVC"
-                    defaultValue={data.cvc}
-                    onChange={handleChange}
-                    required
-                  />
               </label>
               <div className="button">                
-                <button className="salvar" type="submit">Comprar</button>
+                <button className="salvar" type="submit">Cadastrarme</button>
               </div>
             </form>
       </div>
