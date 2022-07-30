@@ -143,8 +143,8 @@ app.put("/produto",(req, res, next) => {
 --------------------------CRUD PEDIDO--------------
 --------------------------------------------------*/
 app.post("/pedido",(req, res, next) => {
-    db.run("INSERT INTO pedido (descricao_do_pedido,data_do_pedido,valor_total_do_pedido,comprovante_de_pagamento,estado_do_pedido) VALUES (?,?,?,?,?)",
-        [req.body.descricao,Date(),req.body.valor, req.body.comprovante, req.body.estado],
+    db.run("INSERT INTO pedido (descricao_do_pedido,date_do_pedido,valor_total_do_pedido,cartao_numero,cartao_data,cartao_cvc,estado_do_pedido) VALUES (?,?,?,?,?,?,?)",
+        [req.body.descricao,Date(),req.body.valor, req.body.numero, req.body.date, req.body.cvc, req.body.estado],
         function(err, result){
             if(err) {
                 res.status(400).json({ "error": err.message })
