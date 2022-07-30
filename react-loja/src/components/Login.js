@@ -17,8 +17,11 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const cliente = await axios.post(URL,data);
-    console.log(cliente)
+    try {
+      await axios.post(URL,data);
+    }catch(error){
+      console.log(error)
+    }
   }
 
   return (

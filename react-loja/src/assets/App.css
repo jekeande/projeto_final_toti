@@ -7,13 +7,12 @@
   justify-content: center;
 }
 .container form{
-  background-color:#C9D6DD ;
   padding:  5px 20px 5px 20px;
   border-radius: 10px;
   margin-top: 10px;
 }
 .container input{
-  border: 2px solid #EEF4F8;
+  border: 2px solid black;
   border-radius: 4px;
   cursor: pointer;
   margin-left: 10px;
@@ -29,7 +28,7 @@
   display: inline-block;
   font-size: 16px;
   border-radius: 5px;
-  background-color: #154360;
+  background-color: black;
 }
 .container button:hover{
   cursor: pointer;
@@ -69,7 +68,6 @@
 }
 .Cards:hover{
   cursor: pointer;
-  background-color: #C9D6DD;
   margin: 1%;
   color: black;
 }
@@ -101,4 +99,7 @@ hr{
 .CardCarrinho p{
   margin: 10px;
   font-weight: bold;
+}
+.buttonCarrinho{
+  margin: 10px;
 }

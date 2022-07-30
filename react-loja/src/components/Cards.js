@@ -10,6 +10,7 @@ const handleSubmit = async (event) => {
   await axios.post(URL,{produto : produto.id_produto});
 }
     return (
+      <div className="container">
       <div className="Cards">
         <form onSubmit={handleSubmit}>
           <div className="img_produto">{produto.foto_produto}</div>
@@ -20,8 +21,11 @@ const handleSubmit = async (event) => {
             <p>Tamanho: {produto.tamanho_produto}</p>
             <p>Preco: {produto.valor_produto}</p>
           </div>
-          <button>Carrinho</button>
+          <div className="button">  
+          <button className="buttonCarrinho">Adicionar ao Carrinho</button>
+          </div>
         </form>
+      </div>
       </div>
     );
 }
