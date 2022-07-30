@@ -1,8 +1,9 @@
 import React from "react";
 
 export default function CardCarrinho({carrinho}) {
-   
+
     return (
+
         <div className="Cards">
           <div>{carrinho.nome_produto}</div>
           <div>{carrinho.tamanho_produto}</div>
