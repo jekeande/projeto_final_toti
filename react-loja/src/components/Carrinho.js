@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import CardCarrinho from "./CardCarrinho.js";
+import {
+  Link
+} from "react-router-dom";
 
 export default function Carrinho() {
 
@@ -27,7 +30,7 @@ export default function Carrinho() {
       ))}</div>
       <div className="container">
         <p>Total da compra: {}</p>
-        <button>Finalizar compra</button>
+        <Link to="/pedido"><button>Finalizar compra</button></Link>
       </div>
     </div>
     
