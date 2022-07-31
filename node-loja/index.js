@@ -224,7 +224,7 @@ app.post("/pedido",(req, res, next) => {
 })
 
 app.get("/pedidosPorAprovar", (req, res, next) => {
-  db.all("SELECT carrinho.id_carrinho, carrinho.id_pedido, carrinho.id_cliente,produto.nome_produto, produto.tamanho_produto, produto.tipo_produto,cliente.nome_cliente, cliente.cpf_cliente, cliente.endereco_cliente, cliente.cep_cliente, cliente.telefone_cliente, cliente.email_cliente,pedido.date_do_pedido,pedido.valor_total_do_pedido,pedido.banco,pedido.num_comprovante,pedido.estado_do_pedido from carrinho JOIN produto on produto.id_produto=carrinho.id_produto JOIN cliente on cliente.id_cliente=carrinho.id_cliente JOIN pedido on pedido.id_pedido=carrinho.id_pedido WHERE pedido.estado_do_pedido = 'por aprovar'",
+  db.all("SELECT carrinho.id_carrinho, carrinho.id_pedido, carrinho.id_cliente, carrinho.valor_total_do_carrinho, carrinho.quantidade_produto, carrinho.id_produto,produto.nome_produto, produto.tamanho_produto, produto.tipo_produto,cliente.nome_cliente, cliente.cpf_cliente, cliente.endereco_cliente, cliente.cep_cliente, cliente.telefone_cliente, cliente.email_cliente,pedido.date_do_pedido,pedido.valor_total_do_pedido,pedido.banco,pedido.num_comprovante,pedido.estado_do_pedido from carrinho JOIN produto on produto.id_produto=carrinho.id_produto JOIN cliente on cliente.id_cliente=carrinho.id_cliente JOIN pedido on pedido.id_pedido=carrinho.id_pedido GROUP BY carrinho.id_pedido",
   [], (err, rows) => {
       if (err) {
           res.status(400).json({ "error": err.message });
