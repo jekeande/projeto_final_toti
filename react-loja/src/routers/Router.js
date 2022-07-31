@@ -5,11 +5,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Home from "./Home.js";
-import NovoCliente from './NovoCliente.js';
-import Login from "./Login.js";
-import Pedido from "./Pedido.js";
-import Carrinho from "./Carrinho.js";
+import Home from "../components/Home.js";
+import NovoCliente from '../components/NovoCliente.js';
+import Login from "../components/Login.js";
+import Pedido from "../components/Pedido.js";
+import Carrinho from "../components/Carrinho.js";
 
 export default function Router() {
   return (

@@ -196,6 +196,10 @@ app.delete("/carrinhoProduto", (req, res, next) => {
             return;
         }
         res.status(200).json(req.body.id + ": eliminado")})
+        console.log(req.body.id)
+        console.log(req.body.id)
+        console.log(req.body.id)
+        console.log(req.body.id)
   });
 
 app.delete("/carrinhoCliente", (req, res, next) => {
