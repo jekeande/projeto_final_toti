@@ -178,7 +178,7 @@ app.put("/carrinho",(req, res, next) => {
         }) 
 })
 app.get("/carrinhos", (req, res, next) => {
-    db.all("SELECT id_carrinho,nome_produto,tamanho_produto,tipo_produto,quantidade_produto,valor_produto from produto JOIN carrinho on carrinho.id_produto=produto.id_produto", [], (err, rows) => {
+    db.all("SELECT id_carrinho,id_cliente,nome_produto,tamanho_produto,tipo_produto,quantidade_produto,valor_produto from produto JOIN carrinho on carrinho.id_produto=produto.id_produto", [], (err, rows) => {
         if (err) {
             res.status(400).json({ "error": err.message });
             return;
@@ -189,8 +189,13 @@ app.get("/carrinhos", (req, res, next) => {
 
 
 app.delete("/carrinhoProduto", (req, res, next) => {
-    db.all("DELETE FROM carrinho WHERE id_produto=?", [req.body.id],
-        res.status(200).json(req.body.id + ": eliminado"));
+    db.all("DELETE FROM carrinho WHERE id_carrinho=?", [req.body.id],
+    function(err, result){
+        if(err) {
+            res.status(400).json({ "error": err.message })
+            return;
+        }
+        res.status(200).json(req.body.id + ": eliminado")})
   });
 
 app.delete("/carrinhoCliente", (req, res, next) => {

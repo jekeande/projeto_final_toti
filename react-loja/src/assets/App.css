@@ -5,11 +5,7 @@
 .container{
   display: flex;
   justify-content: center;
-}
-.container form{
-  padding:  5px 20px 5px 20px;
   border-radius: 10px;
-  margin-top: 10px;
 }
 .container input{
   border: 2px solid black;
@@ -77,7 +73,6 @@
   background-color: black;
   padding:  0 30px 0 30px;
 }
-
 .Menu p{
   color: white;
   font-size: 20px;
@@ -102,4 +97,7 @@ hr{
 }
 .buttonCarrinho{
   margin: 10px;
+}
+.CardCarrinho .remover:hover{
+  background-color: red;
 }
