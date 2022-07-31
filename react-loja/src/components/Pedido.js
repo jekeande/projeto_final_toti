@@ -28,17 +28,33 @@ export default function Pedido() {
 
   return (
     <div className="container">
-      <div className="NewPedido">
+        <div className="banco">
+            <fieldset>
+            <legend><h3>Intitucao: Banco do Brasil S.A</h3></legend>
+            <p>Tipo de conta: Conta Corrente</p>
+            <p>Agencia: 01234</p>
+            <p>Conta: 567891020</p>
+            <p>PIX: 61991980000</p>
+            </fieldset>
+
+            <fieldset>
+            <legend><h3>Intitucao: Itau Unibanco S.A</h3></legend>
+            <p>Tipo de conta: Conta Corrente</p>
+            <p>Agencia: 01234</p>
+            <p>Conta: 567891020</p>
+            <p>PIX: jekeande@gmail.com</p>
+            </fieldset>
+
+            <fieldset>
+            <legend><h3>Intitucao: Caixa Economica Federal</h3></legend>
+            <p>Tipo de conta: Poupanca</p>
+            <p>Agencia: 01234</p>
+            <p>Conta: 567891020</p>
+            <p>PIX: 61991983364</p>
+            </fieldset>
+        <fieldset>
+            <legend><h3>Pagamento</h3></legend>
             <form onSubmit={handleSubmit}>
-              <label><h3>Descricao:
-                  <input
-                    type="text"
-                    name="descricao"
-                    defaultValue={data.descricao}
-                    onChange={handleChange}
-                    required
-                  /></h3>
-              </label>
               <label><h3>Valor Total:
                   <input
                     type="text"
@@ -48,37 +64,30 @@ export default function Pedido() {
                     required
                   /></h3>
               </label>
-              <label><h3>Dados do cartao:</h3>
+              <label><h3>Dados do pagamento realizado</h3>
                   <input
                     type="text"
-                    name="numero"
-                    placeholder="Numero do cartao"
-                    defaultValue={data.numero}
+                    name="banco"
+                    placeholder="Banco do pagamento"
+                    defaultValue={data.banco}
                     onChange={handleChange}
                     required
                   />
                   <input
                     type="text"
-                    name="date"
-                    placeholder="MM/AA"
-                    defaultValue={data.date}
-                    onChange={handleChange}
-                    required
-                  />
-                  <input
-                    type="text"
-                    name="cvc"
-                    placeholder="CVC"
-                    defaultValue={data.cvc}
+                    name="comprovante"
+                    placeholder="N° do comprovante de pagamento"
+                    defaultValue={data.comprovante}
                     onChange={handleChange}
                     required
                   />
                   </label>
               <div className="button">                
-                <button className="salvar" type="submit">Fazer Pedido</button>
+                <button type="submit">Fazer Pagamento</button>
               </div>
             </form>
-      </div>
-    </div>
+            </fieldset>
+        </div>
+        </div>
   );
 }

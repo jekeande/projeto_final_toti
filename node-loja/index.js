@@ -143,8 +143,8 @@ app.put("/produto",(req, res, next) => {
 --------------------------CRUD CARRINHO--------------
 --------------------------------------------------*/
 app.post("/carrinho",(req, res, next) => {
-    db.run("INSERT INTO carrinho (id_cliente,id_produto,quantidade_produto) VALUES (?,?,?)",
-        [req.body.cliente,req.body.produto,req.body.quantidade],
+    db.run("INSERT INTO carrinho (id_cliente,id_produto,id_pedido,quantidade_produto,valor_total_do_carrinho) VALUES (?,?,?,?,?)",
+        [req.body.cliente,req.body.produto,req.body.pedido,req.body.quantidade,req.body.valor],
         function(err, result){
             if(err) {
                 res.status(400).json({ "error": err.message })
@@ -154,6 +154,10 @@ app.post("/carrinho",(req, res, next) => {
                 "carrinho Cadastrado ID": this.lastID
             })
         }) 
+        console.log(req.body.pedido)
+        console.log(req.body.pedido)
+        console.log(req.body.pedido)
+        console.log(req.body.pedido)
 })
 
 app.get("/carrinho", (req, res, next) => {
@@ -178,7 +182,7 @@ app.put("/carrinho",(req, res, next) => {
         }) 
 })
 app.get("/carrinhos", (req, res, next) => {
-    db.all("SELECT id_carrinho,id_cliente,nome_produto,tamanho_produto,tipo_produto,quantidade_produto,valor_produto from produto JOIN carrinho on carrinho.id_produto=produto.id_produto", [], (err, rows) => {
+    db.all("SELECT id_carrinho,id_pedido,id_cliente,nome_produto,tamanho_produto,tipo_produto,quantidade_produto,valor_produto from carrinho JOIN produto on produto.id_produto=carrinho.id_produto WHERE id_pedido is NULL", [], (err, rows) => {
         if (err) {
             res.status(400).json({ "error": err.message });
             return;
@@ -196,10 +200,6 @@ app.delete("/carrinhoProduto", (req, res, next) => {
             return;
         }
         res.status(200).json(req.body.id + ": eliminado")})
-        console.log(req.body.id)
-        console.log(req.body.id)
-        console.log(req.body.id)
-        console.log(req.body.id)
   });
 
 app.delete("/carrinhoCliente", (req, res, next) => {
@@ -210,8 +210,8 @@ app.delete("/carrinhoCliente", (req, res, next) => {
 --------------------------CRUD PEDIDO--------------
 --------------------------------------------------*/
 app.post("/pedido",(req, res, next) => {
-    db.run("INSERT INTO pedido (descricao_do_pedido,date_do_pedido,valor_total_do_pedido,cartao_numero,cartao_data,cartao_cvc,estado_do_pedido) VALUES (?,?,?,?,?,?,?)",
-        [req.body.descricao,Date(),req.body.valor, req.body.numero, req.body.date, req.body.cvc, "por aprovar"],
+    db.run("INSERT INTO pedido (date_do_pedido,valor_total_do_pedido,banco,num_comprovante,estado_do_pedido) VALUES (?,?,?,?,?)",
+        [Date(),req.body.valor, req.body.banco, req.body.comprovante, "por aprovar"],
         function(err, result){
             if(err) {
                 res.status(400).json({ "error": err.message })
@@ -223,8 +223,9 @@ app.post("/pedido",(req, res, next) => {
         }) 
 })
 
-app.get("/pedidos", (req, res, next) => {
-  db.all("SELECT * FROM pedido", [], (err, rows) => {
+app.get("/pedidosPorAprovar", (req, res, next) => {
+  db.all("SELECT carrinho.id_carrinho, carrinho.id_pedido, carrinho.id_cliente,produto.nome_produto, produto.tamanho_produto, produto.tipo_produto,cliente.nome_cliente, cliente.cpf_cliente, cliente.endereco_cliente, cliente.cep_cliente, cliente.telefone_cliente, cliente.email_cliente,pedido.date_do_pedido,pedido.valor_total_do_pedido,pedido.banco,pedido.num_comprovante,pedido.estado_do_pedido from carrinho JOIN produto on produto.id_produto=carrinho.id_produto JOIN cliente on cliente.id_cliente=carrinho.id_cliente JOIN pedido on pedido.id_pedido=carrinho.id_pedido WHERE pedido.estado_do_pedido = 'por aprovar'",
+  [], (err, rows) => {
       if (err) {
           res.status(400).json({ "error": err.message });
           return;

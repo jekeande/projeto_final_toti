@@ -10,17 +10,18 @@ import NovoCliente from '../components/NovoCliente.js';
 import Login from "../components/Login.js";
 import Pedido from "../components/Pedido.js";
 import Carrinho from "../components/Carrinho.js";
+import MinhasCompras from "../components/MinhasCompras"
 
 export default function Router() {
   return (
     <div className="App">
         <BrowserRouter>
               <div className="Menu">
-                <Link to="/"><p className="Home">Home</p></Link>
-                <Link to="/login"><p className="buttonLogin">Login</p></Link>
-                <Link to="/carrinho"><p className="buttonLogin">Carrinho</p></Link>
-                <Link to="/pedido"><p className="buttonLogin">Pedido</p></Link>
-                <Link to="/Sair"><p className="buttonLogin">Sair</p></Link>
+                <Link to="/"><p>Home</p></Link>
+                <Link to="/login"><p>Login</p></Link>
+                <Link to="/carrinho"><p>Carrinho</p></Link>
+                <Link to="/compras"><p>Minhas Compras</p></Link>
+                <Link to="/Sair"><p>Sair</p></Link>
               </div>
               <div className="centro">
                 <Routes>
@@ -29,6 +30,7 @@ export default function Router() {
                   <Route exact path="/new" element={<NovoCliente />} />
                   <Route exact path="/pedido" element={<Pedido />} />
                   <Route exact path="/carrinho" element={<Carrinho />} />
+                  <Route exact path="/compras" element={<MinhasCompras />} />
                 </Routes>
               </div>
       </BrowserRouter>
