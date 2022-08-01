@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import ComprasPorAprovar from "./ComprasPorAprovar";
+import ComprasAprovadas from "./ComprasAprovadas";
 
 export default function MinhasCompras() {
   
@@ -18,7 +19,21 @@ export default function MinhasCompras() {
       setState(response.data)
     })
   }, []);
+//---------------------------------------------------------------------------
+const URLA = "http://localhost:3001/pedidosAprovados";
 
+const [stateA, setStateA] = useState([]);
+
+const getDataA = async () => {
+  const response = await axios.get(URLA);
+  return response;
+};
+
+useEffect(() => { 
+  getDataA().then((response) => {
+    setStateA(response.data)
+  })
+}, []);
   return (
     <div className="Compras">
       <h1>Compras por Aprovar</h1>
@@ -27,6 +42,9 @@ export default function MinhasCompras() {
         <ComprasPorAprovar key={key} pedido={pedido} />
       ))}
       <h1>Compras Aprovadas</h1>
+      {stateA.map((pedido, key) => (
+        <ComprasAprovadas key={key} pedido={pedido} />
+      ))}
      </div>
   );
 }

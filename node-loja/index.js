@@ -222,17 +222,36 @@ app.post("/pedido",(req, res, next) => {
             })
         }) 
 })
-
-app.get("/pedidosPorAprovar", (req, res, next) => {
-  db.all("SELECT carrinho.id_carrinho, carrinho.id_pedido, carrinho.id_cliente, carrinho.valor_total_do_carrinho, carrinho.quantidade_produto, carrinho.id_produto,produto.nome_produto, produto.tamanho_produto, produto.tipo_produto,cliente.nome_cliente, cliente.cpf_cliente, cliente.endereco_cliente, cliente.cep_cliente, cliente.telefone_cliente, cliente.email_cliente,pedido.date_do_pedido,pedido.valor_total_do_pedido,pedido.banco,pedido.num_comprovante,pedido.estado_do_pedido from carrinho JOIN produto on produto.id_produto=carrinho.id_produto JOIN cliente on cliente.id_cliente=carrinho.id_cliente JOIN pedido on pedido.id_pedido=carrinho.id_pedido WHERE pedido.estado_do_pedido='por aprovar'",
-  [], (err, rows) => {
-      if (err) {
-          res.status(400).json({ "error": err.message });
-          return;
-      }
-      res.status(200).json(rows);
+app.get("/pedido", (req, res, next) => {
+    db.all("SELECT * FROM pedido", [], (err, rows) => {
+        if (err) {
+            res.status(400).json({ "error": err.message });
+            return;
+        }
+        res.status(200).json(rows);
+    });
   });
-});
+app.get("/pedidosPorAprovar", (req, res, next) => {
+    db.all("SELECT carrinho.id_carrinho, carrinho.id_pedido, carrinho.id_cliente, carrinho.valor_total_do_carrinho, carrinho.quantidade_produto, carrinho.id_produto,produto.nome_produto, produto.tamanho_produto, produto.tipo_produto,cliente.nome_cliente, cliente.cpf_cliente, cliente.endereco_cliente, cliente.cep_cliente, cliente.telefone_cliente, cliente.email_cliente,pedido.date_do_pedido,pedido.valor_total_do_pedido,pedido.banco,pedido.num_comprovante,pedido.estado_do_pedido from carrinho JOIN produto on produto.id_produto=carrinho.id_produto JOIN cliente on cliente.id_cliente=carrinho.id_cliente JOIN pedido on pedido.id_pedido=carrinho.id_pedido WHERE pedido.estado_do_pedido='por aprovar'",
+    [], (err, rows) => {
+        if (err) {
+            res.status(400).json({ "error": err.message });
+            return;
+        }
+        res.status(200).json(rows);
+    });
+  });
+
+app.get("/pedidosAprovados", (req, res, next) => {
+    db.all("SELECT carrinho.id_carrinho, carrinho.id_pedido, carrinho.id_cliente, carrinho.valor_total_do_carrinho, carrinho.quantidade_produto, carrinho.id_produto,produto.nome_produto, produto.tamanho_produto, produto.tipo_produto,cliente.nome_cliente, cliente.cpf_cliente, cliente.endereco_cliente, cliente.cep_cliente, cliente.telefone_cliente, cliente.email_cliente,pedido.date_do_pedido,pedido.valor_total_do_pedido,pedido.banco,pedido.num_comprovante,pedido.estado_do_pedido from carrinho JOIN produto on produto.id_produto=carrinho.id_produto JOIN cliente on cliente.id_cliente=carrinho.id_cliente JOIN pedido on pedido.id_pedido=carrinho.id_pedido WHERE pedido.estado_do_pedido='aprovado'",
+    [], (err, rows) => {
+        if (err) {
+            res.status(400).json({ "error": err.message });
+            return;
+        }
+        res.status(200).json(rows);
+    });
+  });
 
 app.put("/pedido",(req, res, next) => {
     db.run("UPDATE pedido SET descricao_do_pedido=?, data_do_pedido=?, valor_total_do_pedido=?, comprovante_de_pagamento=?, estado_do_pedido=? WHERE id_pedido=?",
