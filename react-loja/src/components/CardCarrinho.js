@@ -40,20 +40,3 @@ export default function CardCarrinho({carrinho}) {
       </div>
     );
   }
-
-  export function Total({valorTotal}){
-    
-    const compra = valorTotal+valorTotal;
-    console.log(compra)
-    console.log(compra)
-    console.log(compra)
-    console.log(compra)
-    console.log(compra)
-    console.log(compra)
-    console.log(compra)
-    console.log(compra)
-    return(
-      <p>Total da compra: {compra}</p>
-    )
-
-  }
