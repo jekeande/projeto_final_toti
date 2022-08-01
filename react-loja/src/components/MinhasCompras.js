@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import ComprasPorAprovar from "./ComprasPorAprovar";
-import ComprasAprovadas from "./ComprasAprovadas";
+import Compras from "./Compras";
 
 export default function MinhasCompras() {
   
@@ -39,11 +38,11 @@ useEffect(() => {
       <h1>Compras por Aprovar</h1>
       <h1>{state.id_pedido}</h1>
       {state.map((pedido, key) => (
-        <ComprasPorAprovar key={key} pedido={pedido} />
+        <Compras key={key} pedido={pedido} />
       ))}
       <h1>Compras Aprovadas</h1>
       {stateA.map((pedido, key) => (
-        <ComprasAprovadas key={key} pedido={pedido} />
+        <Compras key={key} pedido={pedido} />
       ))}
      </div>
   );

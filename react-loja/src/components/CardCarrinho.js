@@ -26,9 +26,9 @@ export default function CardCarrinho({carrinho}) {
             <hr />
             <p>{carrinho.tipo_produto}</p>
             <p>Tamanho: {carrinho.tamanho_produto}</p>
-            <p>Preco: {valorTotal}</p>
+            <p>Preco: {valorTotal.toFixed(2)}</p>
             <p>
-              <button onClick={() => setCount(count - 1)}>-</button>
+              <button className="menos" onClick={() => setCount(count - 1)}>-</button>
               {count}
               <button onClick={() => setCount(count + 1)}>+</button>
               <button className="remover" onClick={handleDelete}>
@@ -39,4 +39,21 @@ export default function CardCarrinho({carrinho}) {
         </form>
       </div>
     );
+  }
+
+  export function Total({valorTotal}){
+    
+    const compra = valorTotal+valorTotal;
+    console.log(compra)
+    console.log(compra)
+    console.log(compra)
+    console.log(compra)
+    console.log(compra)
+    console.log(compra)
+    console.log(compra)
+    console.log(compra)
+    return(
+      <p>Total da compra: {compra}</p>
+    )
+
   }

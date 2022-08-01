@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function ComprasAprovadas({pedido}) { 
+export default function Compras({pedido}) { 
 
     return (
-      <div className="Aprovadas">
+      <div className="porAprovar">
         <table>
           <tbody>
             <tr>
