@@ -48,7 +48,7 @@ app.get("/clientes", (req, res, next) => {
 });
 
 const confirmaLogin = (req, res, next) => {
-    db.get("SELECT senha_cliente FROM cliente WHERE cliente.email_cliente = (?)",
+    db.get("SELECT id_cliente,nome_cliente,senha_cliente FROM cliente WHERE cliente.email_cliente = (?)",
      [req.body.email], (err, rows) => {  
         if (err) {        
             res.json({ error: "Usuário não cadastrado"})          
@@ -62,7 +62,6 @@ const confirmaLogin = (req, res, next) => {
             }
         })
     }
-
 app.post("/login", confirmaLogin, (req, res) =>  {
     res.send("Bem-vindo " + req.body.email)
 })
