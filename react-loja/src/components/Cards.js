@@ -3,11 +3,17 @@ import axios from 'axios';
 
 export default function Cards({produto}) { 
 
-const URL = "http://localhost:3001/carrinho"
+  const URL = "http://localhost:3001/carrinhoprova"
+  const URLD = "http://localhost:3001/carrinho"
 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  await axios.post(URL,{produto : produto.id_produto});
+  if(produto.id_produto){
+    await axios.get(URL,{produto : produto.id_produto});
+    console.log('produto registrado')
+  }else{
+    await axios.post(URLD,{produto : produto.id_produto});
+  }
 }
     return (
       <div className="container">

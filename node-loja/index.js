@@ -155,6 +155,20 @@ app.post("/carrinho",(req, res, next) => {
         })
 })
 
+
+app.get("/carrinhoprova", (req, res, next) => {
+    const select = db.all("SELECT id_cliente,id_produto,id_pedido FROM carrinho WHERE id_cliente=? AND id_produto=? AND id_pedido is NULL",
+    [req.body.cliente, req.body.produto, req.body.pedido], (err, rows) => {
+        if (err) {
+            res.status(400).json({ "error": err.message });
+            return;
+        }
+        res.status(200).json(rows);
+    });
+});
+
+
+
 app.get("/carrinho", (req, res, next) => {
   db.all("SELECT * FROM carrinho", [], (err, rows) => {
       if (err) {
