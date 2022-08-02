@@ -152,11 +152,7 @@ app.post("/carrinho",(req, res, next) => {
             res.status(201).json({
                 "carrinho Cadastrado ID": this.lastID
             })
-        }) 
-        console.log(req.body.pedido)
-        console.log(req.body.pedido)
-        console.log(req.body.pedido)
-        console.log(req.body.pedido)
+        })
 })
 
 app.get("/carrinho", (req, res, next) => {
@@ -170,8 +166,8 @@ app.get("/carrinho", (req, res, next) => {
 });
 
 app.put("/carrinho",(req, res, next) => {
-    db.run("UPDATE carrinho SET quantidade_produto=? WHERE id_carrinho=?",
-        [req.body.quantidade, req.body.id],
+    db.run("UPDATE carrinho SET quantidade_produto=?, valor_total_do_carrinho=?, id_pedido=? WHERE id_carrinho=?",
+        [req.body.quantidade,req.body.valor,req.body.pedido,req.body.id],
         function(err, result){
             if(err) {
                 res.status(400).json({ "error": err.message })
