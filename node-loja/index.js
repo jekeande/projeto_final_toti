@@ -48,8 +48,8 @@ app.get("/clientes", (req, res, next) => {
 });
 
 const confirmaLogin = (req, res, next) => {
-    db.get("SELECT id_cliente,nome_cliente,senha_cliente FROM cliente WHERE cliente.email_cliente = (?)",
-     [req.body.email], (err, rows) => {  
+    db.get("SELECT senha_cliente FROM cliente WHERE cliente.email_cliente = (?)",
+    [req.body.email], (err, rows) => {  
         if (err) {        
             res.json({ error: "Usuário não cadastrado"})          
         } else {          
@@ -163,7 +163,7 @@ app.get("/carrinhoprova", (req, res, next) => {
             res.status(400).json({ "error": err.message });
             return;
         }
-        res.status(200).json(rows);
+        res.status(200).json(rows); 
     });
 });
 

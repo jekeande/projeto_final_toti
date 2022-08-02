@@ -8,8 +8,9 @@ export default function Cards({produto}) {
 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  if(produto.id_produto){
-    await axios.get(URL,{produto : produto.id_produto});
+  const carro = await axios.get(URL,{produto : produto.id_produto});
+
+  if(!carro){
     console.log('produto registrado')
   }else{
     await axios.post(URLD,{produto : produto.id_produto});

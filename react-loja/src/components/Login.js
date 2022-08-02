@@ -24,9 +24,12 @@ export default function Login() {
     }
   }
 
+  console.log(data)
+
   return (
     <div className="container">
       <div className="NewContact">
+        <h1>{data.email}</h1>
             <form onSubmit={handleSubmit}>
               <label><h3>E-mail:
                   <input
