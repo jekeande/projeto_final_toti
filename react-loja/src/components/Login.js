@@ -24,8 +24,6 @@ export default function Login() {
     }
   }
 
-  console.log(data)
-
   return (
     <div className="container">
       <div className="NewContact">
