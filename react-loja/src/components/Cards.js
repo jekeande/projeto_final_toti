@@ -1,19 +1,38 @@
 import React from "react";
+import axios from 'axios';
 
-export default function Cards({produto}) {
+export default function Cards({produto}) { 
 
+  const URL = "http://localhost:3001/carrinhoprova"
+  const URLD = "http://localhost:3001/carrinho"
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const carro = await axios.get(URL,{produto : produto.id_produto});
+
+  if(!carro){
+    console.log('produto registrado')
+  }else{
+    await axios.post(URLD,{produto : produto.id_produto});
+  }
+}
     return (
+      <div className="container">
       <div className="Cards">
-        <div className="img_produto">
-            {produto.foto_produto}
-        </div>
-        <div className="descricao_produto">
-          <p>{produto.nome_produto}</p>
-          <hr/>
-          <p>{produto.tipo_produto}</p>
-          <p>Tamanho: {produto.tamanho_produto}</p>
-          <p>Preco: {produto.valor_produto}</p>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="img_produto">{produto.foto_produto}</div>
+          <div className="descricao_produto">
+            <p>{produto.nome_produto}</p>
+            <hr />
+            <p>{produto.tipo_produto}</p>
+            <p>Tamanho: {produto.tamanho_produto}</p>
+            <p>Preco: {produto.valor_produto}</p>
+          </div>
+          <div className="button">  
+          <button className="buttonCarrinho">Adicionar ao Carrinho</button>
+          </div>
+        </form>
+      </div>
       </div>
     );
 }

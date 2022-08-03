@@ -19,11 +19,13 @@ export default function NovoCliente() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try{
     const cliente = await axios.post(URL,data);
-    if (cliente){
       Navigate('/login');
-    }else
+      console.log(cliente)
+    }catch{
      console.error();
+    }
   }
 
   return (

@@ -17,13 +17,17 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const cliente = await axios.post(URL,data);
-    console.log(cliente)
+    try {
+      await axios.post(URL,data);
+    }catch(error){
+      console.log(error)
+    }
   }
 
   return (
     <div className="container">
       <div className="NewContact">
+        <h1>{data.email}</h1>
             <form onSubmit={handleSubmit}>
               <label><h3>E-mail:
                   <input

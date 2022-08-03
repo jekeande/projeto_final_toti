@@ -1,6 +1,7 @@
 import React from "react";
-import Router from "./components/Router";
-import './assets/App.css';
+import '../assets/App.css';
+import Router from "../routers/Router";
+//import ContextLogin from "../providers/ContextLogin";
 
 export default function App() {
   return (

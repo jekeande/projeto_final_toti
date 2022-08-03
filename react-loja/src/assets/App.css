@@ -1,19 +1,14 @@
-* {
+.App{
     font-family: sans-serif;
     text-decoration: none;
 }
 .container{
   display: flex;
   justify-content: center;
-}
-.container form{
-  background-color:#C9D6DD ;
-  padding:  5px 20px 5px 20px;
   border-radius: 10px;
-  margin-top: 10px;
 }
 .container input{
-  border: 2px solid #EEF4F8;
+  border: 2px solid black;
   border-radius: 4px;
   cursor: pointer;
   margin-left: 10px;
@@ -29,7 +24,7 @@
   display: inline-block;
   font-size: 16px;
   border-radius: 5px;
-  background-color: #154360;
+  background-color: black;
 }
 .container button:hover{
   cursor: pointer;
@@ -54,14 +49,14 @@
     justify-content: center; 
     flex-wrap: wrap;
 }
+.img_produto{
+  background-color: black;
+  height: 150px;
+}
 .Cards{
   margin: 20px 10px 20px 10px;
   border: 1px solid;
   border-radius: 5px;
-}
-.img_produto{
-  background-color: black;
-  height: 150px;
 }
 .Cards p{
   margin: 10px;
@@ -69,7 +64,6 @@
 }
 .Cards:hover{
   cursor: pointer;
-  background-color: #C9D6DD;
   margin: 1%;
   color: black;
 }
@@ -78,8 +72,9 @@
   justify-content: space-between;
   background-color: black;
   padding:  0 30px 0 30px;
+  margin-bottom: 10px;
+  /*position: fixed;*/
 }
-
 .Menu p{
   color: white;
   font-size: 20px;
@@ -92,4 +87,74 @@
 }
 hr{
   width: 90%;
+}
+.CardCarrinho{
+  margin: 20px 10px 20px 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.CardCarrinho p{
+  margin: 10px;
+  font-weight: bold;
+}
+.buttonCarrinho{
+  margin: 10px;
+}
+.CardCarrinho .remover:hover{
+  background-color: red;
+}
+.banco{
+  display: flex;
+  justify-content: center; 
+  flex-wrap: wrap;  
+  font-weight: bold;
+}
+.container fieldset{
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+.banco input{
+  margin: 10px;
+}
+.banco p{
+  margin: 5px;
+}
+.container .pagamento{
+  width: 60%;
+  padding: 20px;
+}
+.container .pagamento fieldset{
+  background-color: #B7D4E5;
+}
+.carrinho{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+.containerCarrinho p{
+  font-weight: bold;
+}
+.MenuCompras{
+  background-color: black;
+}
+.porAprovar{
+  margin: 1px;
+  padding: 1px;
+  border: 1px solid black;
+}
+.buscar{
+  background-color: black;
+  margin: 0%;
+  padding: 0%;
+  display: flex;
+  justify-content: flex-end;
+}
+.buscar input{
+  background-color: white;
+  height: 20px;
+  margin: 10px;
+  width: 200px;
+  text-align: right;
 }
