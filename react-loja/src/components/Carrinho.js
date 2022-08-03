@@ -10,6 +10,7 @@ export default function Carrinho() {
   const URL = "http://localhost:3001/carrinhos";
 
   const [state, setState] = useState([]);
+  const [search, setSearch] = useState("");
 
   const getData = async () => {
     const response = await axios.get(URL);
@@ -22,10 +23,19 @@ export default function Carrinho() {
     })
   }, []);
 
+  const searcher = (e) => {
+    setSearch(e.target.value)   
+  }
+
+  const results = !search ? state : state.filter((dato)=> dato.nome_produto.toLowerCase().includes(search.toLocaleLowerCase()))
+
   return (
     <div className="containerCarrinho">
+        <div className="buscar">
+            <input type="text" placeholder='Buscar Produto por modelo' value={search} onChange={searcher}/>
+        </div>
         <div className="Home">
-          {state.map((carrinho, key) => (
+          {results.map((carrinho, key) => (
             <CardCarrinho key={key} carrinho={carrinho} />
           ))}
         </div>

@@ -13,7 +13,7 @@ import Carrinho from "../components/Carrinho.js";
 import MinhasCompras from "../components/MinhasCompras"
 
 export default function Router() {
-  let auth = false;
+  let auth = true;
   return (
     <div className="App">
         <BrowserRouter>

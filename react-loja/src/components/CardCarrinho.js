@@ -8,13 +8,12 @@ export default function CardCarrinho({carrinho}) {
   const valorTotal = parseFloat(valor*count);
   const URL = "http://localhost:3001/carrinhoProduto";
 
-  const handleDelete = async () => {
-    const del =  await axios.delete(URL,{id : carrinho.id_carrinho});
-    console.log(del)      
-    console.log(del)
-  }
   const handleSubmit = async (e) => {
     e.preventDefault();
+  }
+  
+  const handleDelete = async () => {
+  await axios.delete(URL,{id : carrinho.id_carrinho});
   }
 
     return (
@@ -28,7 +27,7 @@ export default function CardCarrinho({carrinho}) {
             <p>Tamanho: {carrinho.tamanho_produto}</p>
             <p>Preco: {valorTotal.toFixed(2)}</p>
             <p>
-              <button className="menos" onClick={() => setCount(count - 1)}>-</button>
+              {count > 1 ? <button className="menos" onClick={() => setCount(count - 1)}>-</button> : false}
               {count}
               <button onClick={() => setCount(count + 1)}>+</button>
               <button className="remover" onClick={handleDelete}>

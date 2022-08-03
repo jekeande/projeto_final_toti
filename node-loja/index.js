@@ -47,7 +47,7 @@ app.get("/clientes", (req, res, next) => {
     });
 });
 
-const confirmaLogin = (req, res, next) => {
+const login = (req, res, next) => {
     db.get("SELECT * FROM cliente WHERE cliente.email_cliente = (?)",
     [req.body.email], (err, rows) => {  
         if (err) {        
@@ -62,7 +62,7 @@ const confirmaLogin = (req, res, next) => {
             }
         })
     }
-app.post("/login", confirmaLogin, (req, res) =>  {
+app.post("/login", login, (req, res) =>  {
     res.send("Bem-vindo " + req.body.email)
 })
 
