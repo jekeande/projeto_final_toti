@@ -1,0 +1,15 @@
+CREATE TABLE "carrinho" ( "id_carrinho" INTEGER UNIQUE, "id_cliente" INTEGER, "id_produto" INTEGER, "id_pedido" INTEGER,"quantidade_produto" INTEGER, "valor_total_do_carrinho" FLOAT, PRIMARY KEY("id_carrinho" AUTOINCREMENT), FOREIGN KEY("id_produto") REFERENCES "produto"("id_produto"), FOREIGN KEY("id_cliente") REFERENCES "cliente"("id_cliente"), FOREIGN KEY("id_pedido") REFERENCES "pedido"("id_pedido"));
+CREATE TABLE "cliente" ( "id_cliente" INTEGER UNIQUE, "cpf_cliente" VARCHAR, "nome_cliente" CHAR, "endereco_cliente" VARCHAR, "cep_cliente" VARCHAR, "telefone_cliente" VARCHAR, "email_cliente" VARCHAR, "senha_cliente" VARCHAR, PRIMARY KEY("id_cliente" AUTOINCREMENT) );
+CREATE TABLE "pedido" ( "id_pedido" INTEGER UNIQUE, "date_do_pedido" DateTime, "valor_total_do_pedido" FLOAT, "banco" VARCHAR, "num_comprovante" VARCHAR,"estado_do_pedido" CHAR, PRIMARY KEY("id_pedido" AUTOINCREMENT) );
+CREATE TABLE "produto" ( "id_produto" INTEGER UNIQUE, "nome_produto" VARCHAR, "tamanho_produto" VARCHAR, "tipo_produto" VARCHAR, "valor_produto" float, PRIMARY KEY("id_produto" AUTOINCREMENT) );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE "cliente" ( "id_cliente" INTEGER UNIQUE, "cpf_cliente" VARCHAR(11) UNIQUE, "nome_cliente" CHAR, "endereco_cliente" VARCHAR, "cep_cliente" VARCHAR, "telefone_cliente" VARCHAR, "email_cliente" VARCHAR, "senha_cliente" VARCHAR, PRIMARY KEY("id_cliente" AUTOINCREMENT) );
+CREATE TABLE "pedido" ( "id_pedido" INTEGER UNIQUE, "id_cliente" INTEGER, "id_produto" INTEGER, "descricao_do_pedido" VARCHAR, "data_do_pedido" DateTime, "valor_total_do_pedido" FLOAT, "comprovante_de_pagamento" IMAGE, "estado_do_pedido" CHAR, PRIMARY KEY("id_pedido" AUTOINCREMENT), FOREIGN KEY("id_produto") REFERENCES "produto"("id_produto"), FOREIGN KEY("id_cliente") REFERENCES "cliente"("id_cliente") );
+CREATE TABLE "produto" ( "id_produto" INTEGER UNIQUE, "nome_produto" VARCHAR, "foto_produto" IMAGE, "tamanho_produto" VARCHAR, "tipo_produto" VARCHAR, "valor_produto" float, PRIMARY KEY("id_produto" AUTOINCREMENT) )
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE "pedido" ( "id_pedido" INTEGER UNIQUE, "cpf_cliente" VARCHAR, "nome_cliente" CHAR, "endereco_cliente" VARCHAR, "cep_cliente" VARCHAR, "telefone_cliente" VARCHAR, "email_cliente" VARCHAR, "descricao_do_pedido" VARCHAR, "data_do_pedido" DateTime, "valor_total_do_pedido" FLOAT, "cartao_numero" VARCHAR, "cartao_data" VARCHAR, "cartao_cvc" VARCHAR, PRIMARY KEY("id_pedido" AUTOINCREMENT) );
+CREATE TABLE "produto" ( "id_produto" INTEGER UNIQUE, "nome_produto" VARCHAR, "foto_produto" IMAGE, "tamanho_produto" VARCHAR, "tipo_produto" VARCHAR, "valor_produto" float, PRIMARY KEY("id_produto" AUTOINCREMENT) )
